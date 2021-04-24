@@ -46,7 +46,11 @@ const init = async (loginTicket) => {
   let cookieData = {
     'stuid': uid,
     'stoken': resData.data.list[0].token,
-    'login_ticket': loginTicket
+    'ltuid': uid,
+    'ltoken': resData.data.list[1].token,
+    'account_id': uid,
+    'login_ticket': loginTicket,
+    'cookie_token': cookieInfo["cookie_token"]
   };
 
   console.log(`COOKIE_STRING='${stringifyCookie(cookieData)}' node index.js`);

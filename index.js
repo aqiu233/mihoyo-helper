@@ -29,7 +29,8 @@ const init = async function() {
   var uid = await forumBh3GetUserid("android01");
   await utils.randomSleepAsync();
   await forumBh3GetDailyReward(act_id,uid,"android01");
-
+  await utils.randomSleepAsync();
+  
   // Sign In
   await async.eachSeries(FORUM_MAP, async (forum) => {
     await forumSignIn(forum);

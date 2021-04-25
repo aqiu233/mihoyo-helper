@@ -12,9 +12,16 @@ const forumPostShare = require('./lib/mihoyo/forum-post-share');
 const forumGetActivitys = require('./lib/mihoyo/forum-get-activity-id');
 const forumBh3GetUserid = require('./lib/mihoyo/forum-bh3-get-userid');
 const forumBh3GetDailyReward = require('./lib/mihoyo/forum-bh3-get-daily-reward');
+const forumBh3GetDefaultRegion = require('./lib/mihoyo/forum-bh3-get-default-region');
 
 // Init
 require('./lib/global').init();
+
+// Configs
+const customregionId = false;
+var regionId = 'android01';
+
+
 
 const init = async function() {
 
@@ -26,9 +33,13 @@ const init = async function() {
       await utils.randomSleepAsync();
     }
   });
-  var uid = await forumBh3GetUserid("android01");
+  if (!customregionId) {
+    regionId = await forumBh3GetDefaultRegion();
+    await utils.randomSleepAsync();
+  }
+  var uid = await forumBh3GetUserid(regionId);
   await utils.randomSleepAsync();
-  await forumBh3GetDailyReward(act_id,uid,"android01");
+  await forumBh3GetDailyReward(act_id,uid,regionId);
   await utils.randomSleepAsync();
   
   // Sign In

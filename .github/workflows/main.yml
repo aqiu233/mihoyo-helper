@@ -1,4 +1,4 @@
-name: "Mihoyo SignIn"
+name: "Mihoyo Helper"
 
 on:
   workflow_dispatch:

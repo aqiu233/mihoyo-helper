@@ -3,7 +3,7 @@ name: "Mihoyo Helper"
 on:
   workflow_dispatch:
   schedule:
-    - cron: "10 1 * * *"
+    - cron: "0 5 * * *"
 
 jobs:
   build:
